@@ -41,9 +41,12 @@ app.use(cors({
 
 require('./passport')(app);
 
+app.use(express.static('public/build'))
+
 // -------------ROUTES-----------
-app.use('/', require('./routes/index'));
+
 app.use('/auth', require('./routes/auth'));
 
+app.get('*', (req, res) => res.sendFile(`${__dirname}/public/build/index.html`))
 
 module.exports = app;

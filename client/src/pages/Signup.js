@@ -4,6 +4,9 @@ import { signupFn } from '../services/auth'
 
 const { Title } = Typography
 
+const googleUrl = process.env.NODE_ENV === 'development' ?
+  "http://localhost:3000/auth/google" : '/auth/google'
+
 const Signup = ({ history }) => {
   const [form] = Form.useForm()
 
@@ -30,6 +33,12 @@ const Signup = ({ history }) => {
             Signup
           </Button>
         </Form>
+        <Divider>
+          Or
+        </Divider>
+        <a href={googleUrl}>
+          <Button block>Singup with Google</Button>
+        </a>
       </Col>
     </Row>
   )

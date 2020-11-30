@@ -9,12 +9,7 @@ import Signup from './pages/Signup'
 import Login from './pages/Login'
 import Profile from './pages/Profile'
 import Home from './pages/Home'
-
-
-// const Home = () => <h1>Home</h1>
-// const Login = () => <h1>Login</h1>
-// const Signup = () => <h1>Signup</h1>
-// const Profile = () => <h1>Profile</h1>
+import JobDetail from './pages/JobDetail'
 
 const Router = () => {
   return (
@@ -25,6 +20,9 @@ const Router = () => {
           <Route path='/login' component={Login} />
           <Route path='/signup' component={Signup} />
           <Route path='/profile' component={Profile} />
+          <Route path='/job/:jobId' component={JobDetail} />
+          {/* 404 page */}
+          <Route component={() => <h1>404 - ke kiere o ke</h1>} />
         </Switch>
       </LayoutApp>
     </BrowserRouter>

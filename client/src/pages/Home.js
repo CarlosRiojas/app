@@ -3,6 +3,7 @@ import { Row, Col, Typography, Card, Button, Modal } from 'antd'
 import { useContextInfo } from '../hooks/context'
 import { getUsrJobs } from '../services/jobs'
 import JobCard from '../components/JobCard'
+import CreateJobForm from '../components/CreateJobForm'
 
 const { Title, Text } = Typography
 
@@ -27,6 +28,11 @@ const Home = () => {
     'OFFER': [],
     'REJECTED': []
   }
+
+  function addJob(job) {
+    setJobs([...jobs, job])
+    setShowModal(false)
+  }
   // Iteramos los trabajos para acceder a su status y asignamos ese trabajo a la propiedad del estado al que corresponden.
   //Hacemos un tipo de push a la propiedad correspondiente del trabajo
   jobs.forEach(job => {
@@ -40,27 +46,27 @@ const Home = () => {
       </Col>
       <Col xs={24} sm={24} md={8}>
         <Card title="Wishlist">
-          {jobsFiltered.WISHLIST.map(job => <JobCard {...job} />)}
+          {jobsFiltered.WISHLIST.map(job => <JobCard key={job._id} {...job} />)}
         </Card>
       </Col>
       <Col xs={24} sm={24} md={8}>
         <Card title="Applied">
-          {jobsFiltered.APPLIED.map(job => <JobCard {...job} />)}
+          {jobsFiltered.APPLIED.map(job => <JobCard key={job._id} {...job} />)}
         </Card>
       </Col>
       <Col xs={24} sm={24} md={8}>
         <Card title="Interview">
-          {jobsFiltered.INTERVIEW.map(job => <JobCard {...job} />)}
+          {jobsFiltered.INTERVIEW.map(job => <JobCard key={job._id} {...job} />)}
         </Card>
       </Col>
       <Col xs={24} sm={24} md={8}>
         <Card title="Offer">
-          {jobsFiltered.OFFER.map(job => <JobCard {...job} />)}
+          {jobsFiltered.OFFER.map(job => <JobCard key={job._id} {...job} />)}
         </Card>
       </Col>
       <Col xs={24} sm={24} md={8}>
         <Card title="Rejected">
-          {jobsFiltered.REJECTED.map(job => <JobCard {...job} />)}
+          {jobsFiltered.REJECTED.map(job => <JobCard key={job._id} {...job} />)}
         </Card>
       </Col>
 
@@ -70,7 +76,7 @@ const Home = () => {
         onOk={() => setShowModal(false)}
         onCancel={() => setShowModal(false)}
       >
-
+        <CreateJobForm addJob={addJob} />
       </Modal>
     </Row>
   ) : <>

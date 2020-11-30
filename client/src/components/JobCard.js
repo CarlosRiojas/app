@@ -7,6 +7,8 @@ function JobCard({ title, description, image, _id, company }) {
       type="inner"
       title={title}
       extra={<a href={`/job/${_id}`}>Details</a>}
+      style={{ marginBottom: '8px' }}
+      hoverable
     >
       <center>
         <Avatar src={image} style={{ backgroundColor: 'white' }} />

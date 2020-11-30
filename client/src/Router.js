@@ -8,9 +8,10 @@ import LayoutApp from "./components/LayoutApp";
 import Signup from './pages/Signup'
 import Login from './pages/Login'
 import Profile from './pages/Profile'
+import Home from './pages/Home'
 
 
-const Home = () => <h1>Home</h1>
+// const Home = () => <h1>Home</h1>
 // const Login = () => <h1>Login</h1>
 // const Signup = () => <h1>Signup</h1>
 // const Profile = () => <h1>Profile</h1>

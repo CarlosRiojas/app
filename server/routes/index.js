@@ -7,15 +7,15 @@ const {
   getUserJobs,
   updateJob
 } = require('../controllers/jobs')
-
+const { isAuth, catchErrs } = require('../middlewares')
 
 // ------------------JOB ROUTES------------------------
 
-router.get('/jobs', getUserJobs);
-router.get('/jobs/:jobId', getJobDetails)
-router.post('/jobs', createJob)
-router.put('/jobs/:jobId', updateJob)
-router.delete('/jobs/:jobId', deleteJob)
+router.get('/jobs', isAuth, catchErrs(getUserJobs));
+router.get('/jobs/:jobId', catchErrs(getJobDetails))
+router.post('/jobs', catchErrs(createJob))
+router.put('/jobs/:jobId', catchErrs(updateJob))
+router.delete('/jobs/:jobId', catchErrs(deleteJob))
 
 
 module.exports = router;

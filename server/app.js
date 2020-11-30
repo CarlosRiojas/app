@@ -47,6 +47,8 @@ app.use(express.static('public/build'))
 
 app.use('/auth', require('./routes/auth'));
 
-app.get('*', (req, res) => res.sendFile(`${__dirname}/public/build/index.html`))
+app.get('*', (req, res) => {
+  res.sendFile(`${__dirname}/public/build/index.html`)
+})
 
 module.exports = app;

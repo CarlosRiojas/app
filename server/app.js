@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const logger = require('morgan');
 const session = require("express-session");
 const MongoStore = require('connect-mongo')(session);
-const flash = require("connect-flash");
+
 const cors = require('cors')
 
 mongoose
@@ -33,7 +33,7 @@ app.use(session({
   saveUninitialized: true,
   store: new MongoStore({ mongooseConnection: mongoose.connection })
 }))
-app.use(flash());
+
 app.use(cors({
   origin: ['http://localhost:3001'],
   credentials: true
@@ -46,6 +46,7 @@ app.use(express.static('public/build'))
 // -------------ROUTES-----------
 
 app.use('/auth', require('./routes/auth'));
+app.use('/api', require('./routes/index'))
 
 app.get('*', (req, res) => {
   res.sendFile(`${__dirname}/public/build/index.html`)
